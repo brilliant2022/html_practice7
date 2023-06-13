@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        button{width: 60px;
+               height:20px;}
+        #my{width: 200px;
+            height: 20px;}
+        input{border-color: white;
+              border-style: none;
+              text-align: end;}  
+    </style>
+</head>
+<body>
+    <table name="table">
+        <caption><b>My Calculator</b></caption>
+        <tr >
+            <th>Result:</th>
+            <th colspan="2"><input type="text" id = "result"></th>
+        </tr>
+        <tr name="tr">
+            <th>Input:</th>
+            <th colspan="2"><input type="text" id = "input"></th>
+        </tr>
+        <tr>
+            <th><button onclick="var v = document.getElementById('input');v.value='';var w = document.getElementById('result');w.value='';">Clear</button></th>
+            <th><button value="(" onclick="var v = document.getElementById('input');v.value += '(';">(</button></th>
+            <th><button value=")" onclick="var v = document.getElementById('input');v.value += ')';">)</button></th>
+        </tr>
+        <tr>
+            <th><button value="1"onclick="var v = document.getElementById('input');v.value += '1';">1</button></th>
+            <th><button value="2"onclick="var v = document.getElementById('input');v.value += '2';">2</button></th>
+            <th><button value="3"onclick="var v = document.getElementById('input');v.value += '3';">3</button></th>
+            <th><button value="+"onclick="var v = document.getElementById('input');v.value += '+';">+</button></th>
+        </tr>
+        <tr>
+            <th><button value="4"onclick="var v = document.getElementById('input');v.value += '4';">4</button></th>
+            <th><button value="5"onclick="var v = document.getElementById('input');v.value += '5';">5</button></th>
+            <th><button value="6"onclick="var v = document.getElementById('input');v.value += '6';">6</button></th>
+            <th><button value="-"onclick="var v = document.getElementById('input');v.value += '-';">-</button></th>
+        </tr>
+        <tr>
+            <th><button value="7"onclick="var v = document.getElementById('input');v.value += '7';">7</button></th>
+            <th><button value="8"onclick="var v = document.getElementById('input');v.value += '8';">8</button></th>
+            <th><button value="9"onclick="var v = document.getElementById('input');v.value += '9';">9</button></th>
+            <th><button value="&Cross;"onclick="var v = document.getElementById('input');v.value += '*';">&Cross;</button></th>
+        </tr>
+        <tr>
+            <th><button value="."onclick="var v = document.getElementById('input');v.value += '.';">.</button></th>
+            <th><button value="0"onclick="var v = document.getElementById('input');v.value += '0';">0</button></th>
+            <th><button onclick="var p = document.getElementById('input').value;var q = eval(p);document.getElementById('result').value = q;">=</button></th>
+            <th><button value="&divide;"onclick="var v = document.getElementById('input');v.value += '/';">&divide;</button></th>
+        </tr>
+        <tr>
+            <th colspan="4"><button value="Check My Result" id="my" onclick="check()">Check My Result</button></th>
+        </tr>
+    </table>
+    <script>
+        function check(){
+            var v=document.getElementById("result").value;
+            var u=parseFloat(v);
+            console.log(u);
+            switch(true){
+                case u>0 && u%3==0:
+                    var w = document.getElementById('result');
+                    w.value='positive(3)';
+                    break;
+                case u>0:
+                    var w = document.getElementById('result');
+                    w.value='positive';   
+                    break;
+                case u<0:
+                    var w = document.getElementById('result');
+                    w.value='negative';
+                    break;
+                case u==0:  
+                    var w = document.getElementById('result');
+                    w.value='zero'; 
+                    break;
+                case isNaN(u):
+                    var w = document.getElementById('result');
+                    w.value='no result yet';
+                    break; 
+            }
+        }
+    </script>  
+</body>
+</html>
